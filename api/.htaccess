@@ -1,0 +1,20 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^movies$ ./Controller/MovieController.php [NC,L,QSA]
+RewriteRule ^movies/(\d+)$ ./Controller/MovieController.php?id=$1 [NC,L,QSA]
+RewriteRule ^actors/(\d+)/movies$ ./Controller/MovieController.php?id=$1&parent=actors [NC,L,QSA]
+RewriteRule ^directors/(\d+)/movies$ ./Controller/MovieController.php?id=$1&parent=directors [NC,L,QSA]
+RewriteRule ^genres/(\d+)/movies$ ./Controller/MovieController.php?id=$1&parent=genres [NC,L,QSA]
+RewriteRule ^actors$ ./Controller/ActorController.php [NC,L,QSA]
+RewriteRule ^actors/(\d+)$ ./Controller/ActorController.php?id=$1 [NC,L,QSA]
+RewriteRule ^movies/(\d+)/actors$ ./Controller/ActorController.php?id=$1&parent=movies [NC,L,QSA]
+RewriteRule ^directors$ ./Controller/DirectorController.php [NC,L,QSA]
+RewriteRule ^directors/(\d+)$ ./Controller/DirectorController.php?id=$1 [NC,L,QSA]
+RewriteRule ^movies/(\d+)/directors$ ./Controller/DirectorController.php?id=$1&parent=movies [NC,L,QSA]
+RewriteRule ^genres$ ./Controller/GenreController.php [NC,L,QSA]
+RewriteRule ^genres/(\d+)$ ./Controller/GenreController.php?id=$1 [NC,L,QSA]
+RewriteRule ^movies/(\d+)/genres$ ./Controller/GenreController.php?id=$1&parent=movies [NC,L,QSA]
+RewriteRule ^reviews$ ./Controller/ReviewController.php [NC,L,QSA]
+RewriteRule ^reviews/(\d+)$ ./Controller/ReviewController.php?id=$1 [NC,L,QSA]
+RewriteRule ^movies/(\d+)/reviews$ ./Controller/ReviewController.php?id=$1&parent=movies [NC,L,QSA]
